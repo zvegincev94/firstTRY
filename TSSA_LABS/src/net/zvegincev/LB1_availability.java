@@ -1,5 +1,7 @@
+package net.zvegincev;
+
 public class LB1_availability {
-	
+
 	public LB1_availability() {
 		
 	}

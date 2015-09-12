@@ -1,4 +1,4 @@
-
+package net.zvegincev;
 
 import java.awt.EventQueue;
 

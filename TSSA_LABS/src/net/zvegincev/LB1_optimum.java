@@ -1,4 +1,4 @@
-
+package net.zvegincev;
 
 public class LB1_optimum {
 
