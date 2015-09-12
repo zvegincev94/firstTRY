@@ -1,8 +1,8 @@
 package net.zvegincev;
 
-public class LB1_availability {
+public class LB1_availability_step1 {
 
-	public LB1_availability() {
+	public LB1_availability_step1() {
 		
 	}
 	
