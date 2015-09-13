@@ -6,9 +6,9 @@ public class LB1_optimum_step2 {
 		
 	}
 	
-	public boolean optimum(float mas, float mas2, float opt, float opt2, float opt3, float opt4) {
-        if(mas>=opt && mas<=opt2){
-        	if(mas2>=opt3 && mas2<=opt4){
+	public boolean optimum(double x, double y, double opt, double opt2, double opt3, double opt4) {
+        if(x>=opt && x<=opt2){
+        	if(y>=opt3 && y<=opt4){
         		return true;
         	}
         }

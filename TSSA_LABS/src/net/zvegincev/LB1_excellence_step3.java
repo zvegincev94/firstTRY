@@ -6,7 +6,7 @@ public class LB1_excellence_step3 {
 		
 	}
 	
-	public boolean excellence(float mas, float mas2, float exc, float exc2) {
+	public boolean excellence(double mas, double mas2, double exc, double exc2) {
         if(mas==exc || mas==exc2){
         	return true;
         }
