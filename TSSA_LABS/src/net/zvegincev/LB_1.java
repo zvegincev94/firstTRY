@@ -16,6 +16,15 @@ public class LB_1 extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 	
+	private static int numb = 50;
+	
+	static double mas[][] = new double[50][2];
+	static int x[] = new int[50];
+	static int y[] = new int[50];
+	static double ava[] = {0.3, 0.5, 0.5, 0.9};
+	static double opt[] = {0.3, 0.4, 0.4, 0.7};
+	static double exc[] = {0.4, 0.6};
+	
 	public LB_1(){}
 	
 	public void paint(Graphics g)
@@ -28,34 +37,18 @@ public class LB_1 extends JPanel
 		//g.drawString("Y2", 5, 12);//Везде +25 к координатам
 		//g.drawString("Y1", 470, 470);//Везде +25 к координатам	
 		g.setColor(Black);
-		double mas[][] = new double[50][2];
-
-		Random rand = new Random();
-		for(int i=0; i<50; i++){
-			int k = i + 1;
-			for(int j=0; j<2; j++){
-				mas[i][j] = rand.nextDouble();
-			}
-			int x = 10 + (int) Math.round(mas[i][0] * 490);
-			int y = 10 + (int) Math.round(mas[i][1] * 490);
-			g.drawString("x" + k, x, y);
-		}
-		double ava[] = new double[4];
-		ava[0] = (double) 0.3;
-		ava[1] = (double) 0.5;
-		ava[2] = (double) 0.5;
-		ava[3] = (double) 0.9;
-		double opt[] = new double[4];
-		opt[0] = (double) 0.3;
-		opt[1] = (double) 0.4;
-		opt[2] = (double) 0.4;
-		opt[3] = (double) 0.7;
-		double exc[] = new double[2];
-		exc[0] = (double) 0.4;
-		exc[1] = (double) 0.6;
 		
-		for(int i=0; i <=50; i++){
-			g.drawString(Integer.toString(i), 7 + (int) Math.round(49*i), 475);
+		
+		
+		for(int i=0; i<numb; i++){
+			int k = i + 1;
+			//System.out.println("Точка №" + k + " " + x[i] + " " + y[i]);
+			g.drawString(Integer.toString(k), x[i]+2, y[i]+5);
+			g.drawOval(x[i]-2, y[i]-2, 4, 4);
+		}
+		
+		for(int i=0; i <=numb; i++){
+			g.drawString(Integer.toString(i), 7 + (int) Math.round(49*i), 10);
 			g.drawString(Integer.toString(i), 0, 15 + (int) Math.round(49*i));
 		}
 		for(int i=0; i <500; i++){
@@ -70,23 +63,29 @@ public class LB_1 extends JPanel
 			g.drawLine(i, 10 + (int) Math.round(490*opt[2]), i+15, 10 + (int) Math.round(490*opt[2]));
 			g.drawLine(i, 10 + (int) Math.round(490*opt[3]), i+15, 10 + (int) Math.round(490*opt[3]));
 			g.setColor(Green);
-			g.drawLine(10 + (int) Math.round(490*exc[0]), i,10 + (int) Math.round(490*exc[0]),i+7);
-			g.drawLine(i, 10 + (int) Math.round(490*exc[1]), i+7, 10 + (int) Math.round(490*exc[1]));
+			//g.drawLine(10 + (int) Math.round(490*exc[0]), i,10 + (int) Math.round(490*exc[0]),i+7);
+			//g.drawLine(i, 10 + (int) Math.round(490*exc[1]), i+7, 10 + (int) Math.round(490*exc[1]));
 			i +=30;
 		}
 		g.setColor(Red);
 		//g.drawRect(10 + (int) Math.round(490*ava[0]), 10 + (int) Math.round(490*ava[2]), 49, 98);
-		g.drawLine(10 + (int) Math.round(490*exc[0]), 0, 10 + (int) Math.round(490*exc[0]), 500);
-		g.drawLine(0, 10 + (int) Math.round(490*exc[1]), 500, 10 + (int) Math.round(490*exc[1]));
-		g.setColor(Black);
+		//g.drawLine(10 + (int) Math.round(490*exc[0]), 0, 10 + (int) Math.round(490*exc[0]), 500);
+		//g.drawLine(0, 10 + (int) Math.round(490*exc[1]), 500, 10 + (int) Math.round(490*exc[1]));
+		g.drawOval((int)(exc[0]*490-39), (int)(exc[1]*490-39), 98, 98);
+		
 		LB1_availability_step1 step1 = new LB1_availability_step1();
 		LB1_optimum_step2 step2 = new LB1_optimum_step2();
 		LB1_excellence_step3 step3 = new LB1_excellence_step3();
-		for(int i=0; i<50; i++){
-			int k = i + 1;
-			if(step1.availability(mas[i][0], mas[i][1], ava[0], ava[1], ava[2], ava[3]) && step2.optimum(mas[i][0], mas[i][1], opt[0], opt[1], opt[2], opt[3]) && step3.excellence(mas[i][0], mas[i][1], exc[0], exc[1])){
-				System.out.println("Точка " + k + " с координатами " + mas[i][0] + ", " + mas[i][1] + " прошла все шаги");
-				g.drawString("O", 8 + (int) Math.round(mas[i][0] * 490), 10 + (int) Math.round(mas[i][1] * 490));
+		
+		g.setColor(Black);
+		for(int i=0; i<numb; i++){
+			if(step1.availability(mas[i][0], mas[i][1], ava[0], ava[1], ava[2], ava[3]) && step2.optimum(mas[i][0], mas[i][1], opt[0], opt[1], opt[2], opt[3]) && step3.excellence(mas[i][0], mas[i][1], exc[0], exc[1], 0.1)){
+				//System.out.println("Точка " + k + " с координатами " + mas[i][0] + ", " + mas[i][1] + " прошла все шаги");
+				g.drawOval(x[i]-1, y[i]-1, 2, 2);
+				g.drawOval(x[i], y[i], 0, 0);
+				g.drawOval(x[i]-2, y[i]-2, 4, 4);
+				g.drawOval(x[i]-3, y[i]-3, 6, 6);
+				//g.drawString("O", 8 + (int) Math.round(mas[i][0] * 490), 10 + (int) Math.round(mas[i][1] * 490));
 				/*if(step2.optimum(mas[i][0], mas[i][1], opt[0], opt[1], opt[2], opt[3])){
 					g.drawString("O", 8 + (int) Math.round(mas[i][0] * 490), 10 + (int) Math.round(mas[i][1] * 490));
 					System.out.println("Точка " + k + " с координатами " + mas[i][0] + ", " + mas[i][1] + " прошла 1 и 2 шаг");
@@ -115,6 +114,33 @@ public class LB_1 extends JPanel
 
 	public static void main(String[] args)
 	{
+		Random rand = new Random();
+		for(int i=0; i<numb; i++){
+			mas[i][0] = rand.nextDouble();
+			mas[i][1] = rand.nextDouble();
+			x[i] = (int) (10 + mas[i][0] * 490);
+			y[i] = (int) (10 + mas[i][1] * 490);
+		}
+		
+		LB1_availability_step1 step1 = new LB1_availability_step1();
+		LB1_optimum_step2 step2 = new LB1_optimum_step2();
+		LB1_excellence_step3 step3 = new LB1_excellence_step3();
+		
+		for(int i=0; i<numb; i++){
+			int k = i + 1;
+			if(step1.availability(mas[i][0], mas[i][1], ava[0], ava[1], ava[2], ava[3]) && step2.optimum(mas[i][0], mas[i][1], opt[0], opt[1], opt[2], opt[3]) && step3.excellence(mas[i][0], mas[i][1], exc[0], exc[1], 0.1)){
+				System.out.println("Точка " + k + " с координатами " + mas[i][0] + ", " + mas[i][1] + " прошла все шаги");
+				//g.drawString("O", 8 + (int) Math.round(mas[i][0] * 490), 10 + (int) Math.round(mas[i][1] * 490));
+				/*if(step2.optimum(mas[i][0], mas[i][1], opt[0], opt[1], opt[2], opt[3])){
+					g.drawString("O", 8 + (int) Math.round(mas[i][0] * 490), 10 + (int) Math.round(mas[i][1] * 490));
+					System.out.println("Точка " + k + " с координатами " + mas[i][0] + ", " + mas[i][1] + " прошла 1 и 2 шаг");
+					if(step3.excellence(mas[i][0], mas[i][1], exc[0], exc[1])){
+						//g.drawString("O", 8 + (int) Math.round(mas[i][0] * 490), 10 + (int) Math.round(mas[i][1] * 490));
+						System.out.println("Точка " + k + " с координатами " + mas[i][0] + ", " + mas[i][1] + " прошла 1 и 2, и 3 шаг");
+					}
+				}*/
+			}
+		}
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 createMainFrame(); 
