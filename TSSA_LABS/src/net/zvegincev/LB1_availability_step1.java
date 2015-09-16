@@ -6,11 +6,9 @@ public class LB1_availability_step1 {
 		
 	}
 	
-	public boolean availability(double X, double Y, double conditionX1, double conditionX2, double conditionY1, double conditionY2) {
-        if(X>=conditionX1 && X<=conditionX2){
-        	if(Y>=conditionY1 && Y<=conditionY2){
-        		return true;
-        	}
+	public boolean availability(double X, double conditionX1, double rad) {
+        if(X<=(conditionX1+rad) && X>=(conditionX1-rad)){
+        	return true;
         }
         return false;
     }  
