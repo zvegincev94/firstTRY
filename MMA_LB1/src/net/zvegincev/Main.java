@@ -1,8 +1,12 @@
 package net.zvegincev;
 
-public class BinTree {
+public class Main {
 
-	public BinTree(){
+	int mas[][];
+	
+	public Main(){}
+	
+	public void firstStep(){
 		
 	}
 	
