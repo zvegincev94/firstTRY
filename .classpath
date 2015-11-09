@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="arduino_v1/gen"/>
+	<classpathentry kind="src" path="arduino_v1/src"/>
+	<classpathentry kind="src" path="Arduino/ArduTank/gen"/>
+	<classpathentry kind="src" path="Arduino/ArduTank/src"/>
+	<classpathentry kind="src" path="BinTree/src"/>
+	<classpathentry kind="src" path="MMA_LB1/src"/>
+	<classpathentry kind="src" path="TSSA_LABS/src"/>
+	<classpathentry kind="lib" path="arduino_v1/libs/android-support-v4.jar"/>
+	<classpathentry kind="lib" path="Arduino/ArduTank/libs/android-support-v4.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="BinTree/bin"/>
+</classpath>

@@ -62,10 +62,12 @@ public class Main {
 		//n = sc.nextInt();
 		//mas = new int [n][n];
 		int n = 4;
-		int mas[][] = {{1,4,6,3},{9,7,10,9},{4,5,11,7},{8,7,8,5}};
+		//int mas[][] = new int [n][n];
+		int mas[][] = {{1,9,4,8},{4,7,5,7},{6,10,11,8},{3,9,7,5}};
 		int[][] mas1 = new int [n][n];
 		int[] min = new int [n];
 		int[][] rez = new int [n][2];
+		int[] rez1 = new int [n];
 		//ArrayList rez = new ArrayList();
 		//ArrayList<Integer> rez = new ArrayList<Integer>();
 		boolean tr = false;
@@ -78,7 +80,14 @@ public class Main {
 			for(int j=0; j<n; j++){
 				//mas[i][j] = 10 + rand.nextInt(90);
 				mas1[i][j] = mas[i][j];
-				System.out.print(mas[i][j] + " ");
+				//System.out.print(mas[i][j] + " ");
+			}
+			//System.out.println(" ");
+		}//Генерирование значений
+		
+		for(int i=0; i<n; i++){
+			for(int j=0; j<n; j++){
+				System.out.print(mas[j][i] + " ");
 			}
 			System.out.println(" ");
 		}//Генерирование значений
@@ -88,14 +97,15 @@ public class Main {
 		while(tr == false){
 			for(int i=0; i<n; i++){
 				rez[i][0] = 0; 
-				rez[i][1] = 0; 
+				rez[i][1] = 0;
+				rez1[i] = 0;
 			}
 			for(int i=0; i<n; i++){
 				min[i] = mas1[i][0];
 			}
 			for(int i=0; i<n; i++){
 				for(int j=0; j<n; j++){
-					if(mas1[i][j]<min[i] && mas1[i][j] != 0){
+					if(mas1[i][j]<min[i] && mas1[i][j] > 0){
 						min[i]=mas1[i][j];
 					}
 				}
@@ -107,9 +117,10 @@ public class Main {
 			
 			for(int i=0; i<n; i++){
 				for(int j=0; j<n; j++){
-					if(mas1[i][j] == 0 && rez[i][1] == 0){
+					if(mas1[i][j] == 0 && rez[i][1] == 0 && rez1[i]==0){
 						rez[i][0] = mas[i][j];
-						rez[i][1] = j;
+						rez[i][1] = j+1;
+						rez1[i] = 1;
 					}
 				}
 			}//шаг 2
@@ -117,16 +128,17 @@ public class Main {
 			tr = true;
 
 			for(int i = 0; i<n;i++){
-				for(int j = 0; j<n;i++){
+				//for(int j = 0; j<n;i++){
 					if(rez[i][0] == 0){
 						tr = false;
 					}
-				}
+				//}
 			}
 			if(tr == true){
 				System.out.println(" ");
 				for(int i= 0; i<n;i++){
-					System.out.print(rez[i] + " ");
+					System.out.print("Работнику " + " " + (i+1) + " " + rez[i][1] + " ");
+					System.out.println(rez[i][0] + " ");
 				}
 				break;
 			}
